@@ -3,7 +3,11 @@ import logging
 import os
 
 if __name__ == '__main__':
-    app = create_app()
+    os.environ['FLASK_APP'] = 'app:create_app'  # Set the FLASK_APP environment variable
+    os.environ['FLASK_ENV'] = 'development'  # Set the FLASK_ENV environment variable to development mode
+
+    # Run the Flask application using flask run with --reload option
+    os.system('flask run --reload')
 
     # Ensure the upload folder exists
     if not os.path.exists(app.config['UPLOAD_FOLDER']):
